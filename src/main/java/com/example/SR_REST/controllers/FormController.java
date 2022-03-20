@@ -79,7 +79,6 @@ public class FormController {
     private boolean getExamplePhoto(CountryInfo country){
         HttpEntity<String> request;
         HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         headers.set("Authorization", "Client-ID 3694gLJ2S2cHk0LbwyilBsbfxsfdrr8AEGP2SoapXHw");
 
         request = new HttpEntity<>(headers);
@@ -116,7 +115,6 @@ public class FormController {
     private boolean getCovidData(CountryInfo country){
         HttpEntity<String> request;
         HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         headers.set("x-rapidapi-host", "covid-19-coronavirus-statistics.p.rapidapi.com");
         headers.set("x-rapidapi-key", "9a6da0ef45msh4e3e0ab88f03b96p18125fjsnd35f85888954");
         String countryName = country.getName().toLowerCase().substring(0, 1).toUpperCase() +
