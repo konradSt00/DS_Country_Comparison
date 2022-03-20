@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .column{
+            size: 25px;
+            height: 50px;
+            width: 300px;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            font-weight: bold;
+
+        }
+        .photo{
+            margin-top: 20px;
+            width: 400px;
+            height: 300px;
+            display: inline-block;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+<div class="row">
+    <div class="column"></div>
+    <div th:text="${country1.getName()}" class="column"></div>
+    <div th:text="${country2.getName()}" class="column"></div>
+</div>
+
+<div class="row">
+    <div class="column">Liczba ludności: </div>
+    <div th:text="${country1.getPopulation()}" class="column"></div>
+    <div th:text="${country2.getPopulation()}" class="column"></div>
+    <div th:if="${country1.getPopulation() > 0 && country2.getPopulation() > 0}" th:text="${country1.getName()} + ' ma ' +  ${#numbers.formatDecimal(country1.getPopulation()/country2.getPopulation(), 1, 2)} + ' razy wiecej mieszkancow niz ' +${country2.getName()}" class="column"></div>
+</div>
+
+
+
+<div class="row">
+    <div class="column">Powierzchnia: </div>
+    <div th:text="${country1.getArea()}" class="column"></div>
+    <div th:text="${country2.getArea()}" class="column"></div>
+    <div th:if="${country1.getArea() > 0 && country2.getArea() > 0}" th:text="${country1.getName()} + ' ma ' +  ${#numbers.formatDecimal(country1.getArea()/ country2.getArea(), 1, 2)} + ' razy większa powierzchnie niz ' +${country2.getName()}" class="column"></div>
+
+</div>
+
+<div class="row">
+    <div class="column">Osób/km2:  </div>
+    <div th:text="${country1.getD()}" class="column"></div>
+    <div th:text="${country2.getD()}" class="column"></div>
+    <div th:if="${country1.getD() > 0 && country2.getD() > 0}" th:text="${country1.getName()} + ' ma ' +  ${#numbers.formatDecimal(country1.getD()/country2.getD(), 1, 2)} + ' razy większa gęstosc zaludnienia niz ' +${country2.getName()}" class="column"></div>
+
+</div>
+
+<div class="row">
+    <div class="column">Na C19 zachorowało: </div>
+    <div th:text="${country1.getC19infections()}" class="column"></div>
+    <div th:text="${country2.getC19infections()}" class="column"></div>
+    <div th:if="${country1.getC19infections() > 0 && country2.getC19infections() > 0}" th:text="${country1.getName()} + ' ma ' +  ${#numbers.formatDecimal(country1.getC19infections()/ country2.getC19infections(), 1, 2)} + ' razy wiecej zachorowań niz ' +${country2.getName()}" class="column"></div>
+
+</div>
+
+<div class="row">
+    <div class="column">Na C19 zmarlo: </div>
+    <div th:text="${country1.getC19deaths()}" class="column"></div>
+    <div th:text="${country2.getC19deaths()}" class="column"></div>
+    <div th:if="${country1.getC19deaths() > 0 && country2.getC19deaths() > 0}" th:text="${country1.getName()} + ' ma ' +  ${#numbers.formatDecimal(country1.getC19deaths()/country2.getC19deaths(), 1, 2)} + ' razy wiecej zgonów na C19 niz ' +${country2.getName()}" class="column"></div>
+
+</div>
+
+<div class="row">
+    <div class="column">Zachorowało na C19 (% populacji) </div>
+    <div th:text="${country1.getRatio()}" class="column"></div>
+    <div th:text="${country2.getRatio()}" class="column"></div>
+</div>
+
+<div style="margin-left: 300px">
+    <div class="photo">
+        <img th:src = "${country1.getExamplePhotoUrl()}">
+    </div>
+
+    <div class="photo">
+        <img th:src = "${country2.getExamplePhotoUrl()}">
+    </div>
+</div>
+
+</body>
+</html>
